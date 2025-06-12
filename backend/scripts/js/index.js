@@ -241,3 +241,205 @@ window.addEventListener("resize", function() {
 loop();
 setInterval(loop, 1000 / 60);
 
+
+
+
+
+
+
+
+//-----------------------------------------Affichage des interfaces
+//-----------------------------------------Affichage des interfaces
+//-----------------------------------------Affichage des interfaces
+
+
+
+
+
+
+
+
+//Variable utiles
+//Variable utiles
+//Variable utiles
+
+
+
+//Titre Dashboard
+let dashboard_title = document.querySelector("body > .p2 > .p0")
+
+//Récupération du boutton retour
+let return_btn = document.querySelector("body > .p2 > .return ")
+
+//Récupération du boutton consulter
+let consulter_btn = document.querySelector("body > .p2 > .p1 > .ctn#consulter > .slc_btn")
+
+//Récupération du boutton ajouter
+let ajouter_btn = document.querySelector("body > .p2 > .p1 > .ctn#ajouter > .slc_btn")
+
+//Récupération du boutton modifier
+let modifier_btn = document.querySelector("body > .p2 > .p1 > .ctn#modifier > .slc_btn")
+
+
+//Récupération du boutton supprimer
+let supprimer_btn = document.querySelector("body > .p2 > .p1 > .ctn#supprimer > .slc_btn")
+
+
+//Récupération du container de selection
+let slc_ctn = document.querySelector("body > .p2 > .p1 ")
+
+
+
+//Récupération du container consulter
+let consulter_ctn = document.querySelector("body > .p2 > .consulter_ctn")
+
+//Récupération du container ajouter
+let ajouter_ctn = document.querySelector("body > .p2 > .ajouter_ctn")
+
+//Récupération du container modifier
+let modifier_ctn = document.querySelector("body > .p2 > .modifier_ctn")
+
+
+//Récupération du container supprimer
+let supprimer_ctn = document.querySelector("body > .p2 > .supprimer_ctn")
+
+
+
+
+
+
+
+
+
+
+//Fonctions utiles
+//Fonctions utiles
+//Fonctions utiles
+
+
+
+//Désactivation des interfaces
+function hide_slc_interfaces(){
+    consulter_ctn.style.display = "none"
+    ajouter_ctn.style.display = "none"
+    modifier_ctn.style.display = "none"
+    supprimer_ctn.style.display = "none"
+    slc_ctn.style.display = "none"
+    
+
+
+
+
+}
+
+
+
+//-----------------------------------------Consulter les taches
+
+
+
+
+//Ajout d'un listener
+consulter_btn.addEventListener("click", ()=>{
+    //Désactivation des interfaces
+    hide_slc_interfaces()
+    //Activation de l'interface consulter
+    consulter_ctn.style.display = "flex"
+    dashboard_title.innerText = "Dashboard > Consulter les taches"
+    return_btn.style.display = "flex"
+
+})
+
+
+
+
+
+
+//-----------------------------------------Ajouter des taches
+
+
+
+
+//Ajout d'un listener
+ajouter_btn.addEventListener("click", ()=>{
+    //Désactivation des interfaces
+    hide_slc_interfaces()
+    //Activation de l'interface ajouter
+    ajouter_ctn.style.display = "flex"
+    dashboard_title.innerText = "Dashboard > Ajouter des taches"
+    return_btn.style.display = "flex"
+
+
+})
+
+
+
+
+
+
+
+//-----------------------------------------Modifier des taches
+
+
+
+
+//Ajout d'un listener
+modifier_btn.addEventListener("click", ()=>{
+    //Désactivation des interfaces
+    hide_slc_interfaces()
+    //Activation de l'interface modifier
+    modifier_ctn.style.display = "flex"
+    dashboard_title.innerText = "Dashboard > Modifier des taches"
+    return_btn.style.display = "flex"
+
+
+})
+
+
+
+
+
+//-----------------------------------------Supprimer des taches
+
+
+
+
+//Ajout d'un listener
+supprimer_btn.addEventListener("click", ()=>{
+    //Désactivation des interfaces
+    hide_slc_interfaces()
+    //Activation de l'interface supprimer
+    supprimer_ctn.style.display = "flex"
+    dashboard_title.innerText = "Dashboard > Supprimer des taches"
+    return_btn.style.display = "flex"
+
+
+})
+
+
+
+
+
+//-----------------------------------------Boutton de retour
+
+
+
+
+//Ajout d'un listener
+return_btn.addEventListener("click", ()=>{
+    //Désactivation des interfaces
+    hide_slc_interfaces()
+    //Activation de l'interface de selection
+    slc_ctn.style.display = "flex"
+    dashboard_title.innerText = "Dashboard"
+    return_btn.style.display = "none"
+
+})
+
+
+
+
+
+
+
+
