@@ -332,6 +332,149 @@ function hide_slc_interfaces(){
 
 }
 
+//Récupération des taches sur le serveur en Backend
+
+function getTasks(container){
+
+
+    let operation = 'getTasks'
+    var http = new XMLHttpRequest();
+    var url = './scripts/php/backend.php';
+    var params = 'operation='+operation;
+    
+ 
+
+
+    http.open('POST', url, true);
+
+ 
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Si l'opération s'est déroulé avec succès
+        if(http.readyState == 4 && http.status == 200) {
+
+            let response_json = http.response;
+            let response_object = JSON.parse(response_json);
+
+            //Si le conteneur est la partie consulter
+            if(container == "consulter"){
+                //On vide le conteneur 
+                consulter_ctn.innerHTML = ""
+
+                //Pour chaque tache créons son conteneur div
+                for(task of response_object){
+                    console.log(task)
+                    let id = task.id
+                    let date = task.created_at + " - Modifié le " + task.updated_at
+                    let status = task.status
+                    let todo = task.todo
+                    let status_txt = status == 'pending' ? "En cours ..." : "Terminé"
+                    
+                    let task_ctn = document.createElement("div")
+                    task_ctn.classList.add('task')
+                    task_ctn.id = id
+                    task_ctn.innerHTML += " <span id='date'> " + date + "</span>"
+                    task_ctn.innerHTML += "<span id='status_round' class='"+ status +"'></span>"
+
+                    task_ctn.innerHTML += "<span id='todo'>" + todo + " </span>"
+                    task_ctn.innerHTML += "<span id='status_txt' class='"+ status +"'>"+ status_txt + "</span>"
+                    //Injection dans le conteneur
+                    consulter_ctn.appendChild(task_ctn)
+
+
+
+                }
+
+
+            }
+
+            else if(container == "modifier"){
+                //On vide le conteneur 
+                modifier_ctn.innerHTML = ""
+
+                //Pour chaque tache créons son conteneur div
+                for(task of response_object){
+                    console.log(task)
+                    let id = task.id
+                    let date = task.created_at + " - Modifié le " + task.updated_at
+                    let status = task.status
+                    let todo = task.todo
+                 
+                    
+                    let task_ctn = document.createElement("div")
+                    task_ctn.classList.add('task')
+                    task_ctn.id = id
+                    task_ctn.innerHTML += " <span id='date'> " + date + "</span>"
+                    task_ctn.innerHTML += "<span onclick='markAsDone("+ id +")' id='status_round' class='"+ status +"'></span>"
+
+                    task_ctn.innerHTML += "<input id='todo' value ='"+ todo + "'>"  
+                    task_ctn.innerHTML += "<button class='modifier btn_t1' onclick ='modifyTask("+ id +")'>Modifier</button>"
+                    //Injection dans le conteneur
+                    modifier_ctn.appendChild(task_ctn)
+
+
+
+                }
+
+
+            }
+
+
+
+            else if(container == "supprimer"){
+                //On vide le conteneur 
+                supprimer_ctn.innerHTML = ""
+
+                //Pour chaque tache créons son conteneur div
+                for(task of response_object){
+                    console.log(task)
+                    let id = task.id
+                    let date = task.created_at + " - Modifié le " + task.updated_at
+                    let status = task.status
+                    let todo = task.todo
+                    let status_txt = status == 'pending' ? "En cours ..." : "Terminé"
+                    
+                    let task_ctn = document.createElement("div")
+                    task_ctn.classList.add('task')
+                    task_ctn.id = id
+                    task_ctn.innerHTML += " <span id='date'> " + date + "</span>"
+                    task_ctn.innerHTML += "<span id='status_round' class='"+ status +"'></span>"
+
+                    task_ctn.innerHTML += "<span id='todo'>" + todo + " </span>" 
+                    task_ctn.innerHTML += "<button onclick ='deleteTask("+ id +")' class='supprimer btn_t1'>Supprimer</button>"
+                    //Injection dans le conteneur
+                    supprimer_ctn.appendChild(task_ctn)
+
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+                
+
+
+        }
+    }
+    http.send(params);
+
+
+}
+ 
+
+
+
+
+
+
+
 
 
 //-----------------------------------------Consulter les taches
@@ -348,7 +491,12 @@ consulter_btn.addEventListener("click", ()=>{
     dashboard_title.innerText = "Dashboard > Consulter les taches"
     return_btn.style.display = "flex"
 
+    getTasks("consulter")
+
+
 })
+
+
 
 
 
@@ -373,6 +521,50 @@ ajouter_btn.addEventListener("click", ()=>{
 })
 
 
+//Récupération du boutton d'ajout de tache
+let add_btn = ajouter_ctn.querySelector(".add_btn")
+
+//Ajout d'un listener pour l'ajout vers le serveur
+add_btn.addEventListener("click", ()=>{
+
+    //Récupération de l'input du todo 
+    let todo_input = ajouter_ctn.querySelector(".add_input")
+    let todo_value = todo_input.value
+
+    let operation = 'addTask'
+    var http = new XMLHttpRequest();
+    var url = './scripts/php/backend.php';
+    var params = 'operation='+operation+'&todo='+todo_value;
+    
+ 
+
+
+    http.open('POST', url, true);
+
+ 
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Si l'opération s'est déroulé avec succès
+        if(http.readyState == 4 && http.status == 200) {
+
+            alert("Tache ajoutée avec succès")
+
+            
+
+
+
+
+
+                
+
+
+        }
+    }
+    http.send(params);
+
+})
+
+
 
 
 
@@ -392,8 +584,96 @@ modifier_btn.addEventListener("click", ()=>{
     dashboard_title.innerText = "Dashboard > Modifier des taches"
     return_btn.style.display = "flex"
 
+    getTasks("modifier")
+
+
 
 })
+
+
+
+//Listener pour la modification de tache accompli ou Non
+function markAsDone(id){
+
+    let tasks = modifier_ctn.querySelectorAll(".task")
+    for(let task of tasks){
+
+        if(task.id == id){
+            let status = task.querySelector("#status_round")
+            if(status.classList.contains("pending")){
+                status.classList.replace("pending", "done")
+
+            }else if(status.classList.contains("done")){
+                status.classList.replace("done", "pending")
+                
+            }
+        }
+        
+
+    }
+    
+}
+
+//Listener de modification pour chaque tache dans le serveur
+
+
+function modifyTask(id){
+
+
+    //Recupération de la valeur de status et de l'input todo
+    let tasks = modifier_ctn.querySelectorAll(".task")
+    let status_val = ""
+    let todo_val = ""
+    for(let task of tasks){
+
+        if(task.id == id){
+            let status = task.querySelector("#status_round")
+            status_val = status.classList.contains("pending") == true ? "pending" : "done"
+
+            let todo = task.querySelector("#todo")
+            todo_val = todo.value
+
+            
+
+        }
+        
+
+    }
+
+    let operation = 'modifyTask'
+    var http = new XMLHttpRequest();
+    var url = './scripts/php/backend.php';
+    var params = 'operation='+operation+'&id='+id+'&todo='+todo_val+'&status='+status_val;
+    
+ 
+
+
+    http.open('POST', url, true);
+
+ 
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Si l'opération s'est déroulé avec succès
+        if(http.readyState == 4 && http.status == 200) {
+
+            alert("Tache modifiée avec succès")
+            //Reinitialisation du container
+            getTasks('modifier')
+
+            
+
+
+
+
+
+                
+
+
+        }
+    }
+    http.send(params);
+
+}
 
 
 
@@ -401,6 +681,46 @@ modifier_btn.addEventListener("click", ()=>{
 
 //-----------------------------------------Supprimer des taches
 
+
+
+//Listener de suppression pour chaque tache dans le serveur
+function deleteTask(id){
+
+
+    let operation = 'deleteTask'
+    var http = new XMLHttpRequest();
+    var url = './scripts/php/backend.php';
+    var params = 'operation='+operation+'&id='+id;
+    
+ 
+
+
+    http.open('POST', url, true);
+
+ 
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Si l'opération s'est déroulé avec succès
+        if(http.readyState == 4 && http.status == 200) {
+
+            alert("Tache Suprimée avec succès")
+            //Reinitialisation du container
+            getTasks('supprimer')
+
+            
+
+
+
+
+
+                
+
+
+        }
+    }
+    http.send(params);
+
+}
 
 
 
@@ -412,6 +732,8 @@ supprimer_btn.addEventListener("click", ()=>{
     supprimer_ctn.style.display = "flex"
     dashboard_title.innerText = "Dashboard > Supprimer des taches"
     return_btn.style.display = "flex"
+    getTasks("supprimer")
+
 
 
 })
