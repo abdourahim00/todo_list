@@ -1409,6 +1409,18 @@ html, body{
         margin-left: 50px;
       }
 
+      body > .p2 > .return {
+        display: none;
+        height: 50px;
+        width: 350px;
+        font-family: morena;
+        margin-left: 50px;
+        margin-top: 20px;
+
+
+      }
+
+
       body > .p2 > .p1{
         position: relative;
 
@@ -1515,7 +1527,340 @@ html, body{
 
     
 
-   
+     body > .p2 > .consulter_ctn {
+        display: none;
+        height: fit-content;
+        width: 60%;
+        background-color: #FFF;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        flex-direction: column;
+
+
+
+          
+
+
+     }
+
+      body > .p2 > .consulter_ctn > .task{
+
+        height: 120px;
+        width: 90%;
+        border: 3px solid #000;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;   
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        background-color: #2a2a2e;
+        margin-top: 50px;
+
+
+      }
+      body > .p2 > .consulter_ctn > .task > #date{
+
+        margin-left: 150px;
+        font-family: helvetica;
+        font-size: medium;
+        color: #DDDDDD;
+
+      }
+
+      body > .p2 > .consulter_ctn > .task > #status_round.pending{
+        height: 35px;
+        width: 35px;
+        border: 3px solid #FFF;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+
+
+
+      }
+      
+      body > .p2 > .consulter_ctn > .task > #status_round.done{
+        height: 35px;
+        width: 35px;
+        border: 3px solid gold;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+
+
+      }
+
+
+      body > .p2 > .consulter_ctn > .task > #todo{
+        margin-left: 150px;
+        margin-top: 10px;
+        font-family: helvetica;
+        font-size: large;
+        color: #FFF;
+        
+
+      }
+
+        body > .p2 > .consulter_ctn > .task > #status_txt.pending{
+        position: absolute;
+        right: 30px;
+      
+        font-family: helvetica;
+        font-size: large;
+        color: #FFF;
+        
+
+      }
+
+      body > .p2 > .consulter_ctn > .task > #status_txt.done{
+        position: absolute;
+        right: 30px;
+      
+        font-family: helvetica;
+        font-size: large;
+        color: gold;
+        
+
+      }
+
+
+      body > .p2 > .modifier_ctn {
+        display: none;
+        height: fit-content;
+        width: 60%;
+        background-color: #FFF;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        flex-direction: column;
+
+
+
+          
+
+
+     }
+
+      body > .p2 > .modifier_ctn > .task{
+
+        height: 120px;
+        width: 90%;
+        border: 3px solid #000;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;   
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        background-color: #2a2a2e;
+        margin-top: 50px;
+
+
+      }
+      body > .p2 > .modifier_ctn > .task > #date{
+
+        margin-left: 150px;
+        font-family: helvetica;
+        font-size: medium;
+        color: #DDDDDD;
+
+      }
+
+      body > .p2 > .modifier_ctn > .task > #status_round.pending{
+        height: 35px;
+        width: 35px;
+        border: 3px solid #FFF;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+        cursor: pointer;
+
+
+
+      }
+      
+      body > .p2 > .modifier_ctn > .task > #status_round.done{
+        height: 35px;
+        width: 35px;
+        border: 3px solid gold;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+        cursor: pointer;
+
+
+
+      }
+
+
+      body > .p2 > .modifier_ctn > .task > #todo{
+        margin-left: 150px;
+        margin-top: 10px;
+        font-family: helvetica;
+        font-size: large;
+        color: #FFF;
+        background-color: #2a2a2e;
+        outline: none;
+        border: #2a2a2e;
+        
+
+      }
+
+     
+
+       body > .p2 > .modifier_ctn > .task > .modifier{
+        position: absolute;
+        right: 30px;
+      
+        font-family: helvetica;
+        font-size: large;
+        color: #FFF;
+        border: 1px solid #FFF;
+        background-color: #2a2a2e;
+        
+
+      }
+
+    body > .p2 > .ajouter_ctn {
+        display: none;
+        height: fit-content;
+        width: 60%;
+        background-color: #FFF;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        flex-direction: row;
+        align-items: center;
+
+
+
+          
+
+
+     }
+    body > .p2 > .ajouter_ctn > .add_input{
+        width: 70%;
+        height: 50px;
+        border: 3px solid #2a2a2e;
+        background-color: #2a2a2e;
+        font-size: x-large;
+         border-radius: 20px;
+         padding-left: 30px;
+         color: #FFF;
+    } 
+
+     body > .p2 > .ajouter_ctn > .add_btn{
+         height: 60px;
+         width: 150px;
+         font-family: morena;
+         font-size: large;
+         margin-left: 50px;
+          border-radius: 20px;
+        background-color: #2a2a2e;
+         color: #FFF;
+
+
+     }
+
+    body > .p2 > .supprimer_ctn {
+        display: none;
+        height: fit-content;
+        width: 60%;
+        background-color: #FFF;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 100px;
+        flex-direction: column;
+
+
+
+          
+
+
+     }
+
+      body > .p2 > .supprimer_ctn > .task{
+
+        height: 120px;
+        width: 90%;
+        border: 3px solid #000;
+        border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;   
+        display: flex; 
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        background-color: #2a2a2e;
+        margin-top: 50px;
+
+
+      }
+      body > .p2 > .supprimer_ctn > .task > #date{
+
+        margin-left: 150px;
+        font-family: helvetica;
+        font-size: medium;
+        color: #DDDDDD;
+
+      }
+
+      body > .p2 > .supprimer_ctn > .task > #status_round.pending{
+        height: 35px;
+        width: 35px;
+        border: 3px solid #FFF;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+
+
+      }
+      
+      body > .p2 > .supprimer_ctn > .task > #status_round.done{
+        height: 35px;
+        width: 35px;
+        border: 3px solid gold;
+        border-radius: 100%;
+        margin-left: 50px;
+        position: absolute;
+
+
+      }
+
+
+      body > .p2 > .supprimer_ctn> .task > #todo{
+        margin-left: 150px;
+        margin-top: 10px;
+        font-family: helvetica;
+        font-size: large;
+        color: #FFF;
+        
+
+      }
+
+        body > .p2 > .supprimer_ctn > .task > .supprimer{
+        position: absolute;
+        right: 30px;
+      
+        font-family: helvetica;
+        font-size: large;
+        color: red;
+        border: 1px solid red;
+        background-color: #2a2a2e;
+        
+
+      }
+
+    
+
+
+
+
 
 
     
