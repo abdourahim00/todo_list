@@ -88,8 +88,111 @@
     </div>
     <div class="p2" id="dashboard_view">
         <span class="p0">Dashboard</span>
-       
-        <div class="p1">
+        <button class="return btn_t1">< Retourner au menu de selection</button>
+        <div class="consulter_ctn">
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="pending"></span>
+
+                <span id="todo"> Faire les courses </span>
+                <span id="status_txt" class="pending">En cours...</span>
+
+
+               
+
+
+            </div>
+
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="done"></span>
+
+                <span id="todo"> Programmer Projet GIT </span>
+                <span id="status_txt" class="done">Terminé</span>
+
+
+               
+
+
+            </div>
+
+
+        </div>
+
+        <div class="ajouter_ctn">
+            <input class="add_input" placeholder="Description de la tâche">
+            <button class="add_btn btn_t1">Ajouter</button>
+        </div>
+
+
+         <div class="modifier_ctn">
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="pending"></span>
+
+                <input id="todo" value="Faire les courses ">
+                <button class="modifier btn_t1">Modifier</button>
+               
+
+
+               
+
+
+            </div>
+
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="done"></span>
+
+                <input id="todo" value="Programmer Projet GIT ">
+                <button class="modifier btn_t1">Modifier</button>
+
+
+
+               
+
+
+            </div>
+
+
+        </div>
+
+
+        
+
+
+        <div class="supprimer_ctn">
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="pending"></span>
+
+                <span id="todo"> Faire les courses </span>
+                <button class="supprimer btn_t1">Supprimer</button>
+
+
+               
+
+
+            </div>
+
+            <div class="task"> 
+                <span id="date"> 09/06/2025   </span>
+                <span id="status_round" class="done"></span>
+
+                <span id="todo"> Programmer Projet GIT </span>
+                <button class="supprimer btn_t1">Supprimer</button>
+                
+
+
+               
+
+
+            </div>
+
+
+        </div>
+
+        <div class="p1" >
             <div class="ctn" id="consulter">
                 <span class="p0">Consulter</span>
     
