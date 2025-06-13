@@ -1,52 +1,31 @@
 <?php
+// ***************** Fichier de configuration d'accès à la base de données **********************
 
+// Type de serveur utilisé
+$server_type = "mysql";
 
-    //*****************Fichier de configuration d'acces a la base de donnees  ***********************/
-    //On utilise l'extension PDO pour l'etablissement des connectionn a la base de donnnees pour ne pas changer le code lors d'une migration vers
-    //un autre type de serveur : compatible avec mysql, oracle
+// Adresse du serveur Docker (nom du service)
+$server_host = "db";
 
+// Identifiants
+$username = "root";
+$password = "";
 
-    //Le type de serveur utilise pour la connection a la base de donnees
-    $server_type = "mysql";
+// Nom de la base de données
+$db_name = "todo_db";
+
+try {
+    // Construction de la chaîne de connexion PDO
+    $dsn = "$server_type:host=$server_host;dbname=$db_name;charset=utf8";
     
-    //Addresse du Server
-
-    $server_host = "localhost";
-
+    // Création de la connexion PDO
+    $conn = new PDO($dsn, $username, $password);
     
-
-    //Nom d'utilisateur
-
-    $username = "root";
-
-    //Mot de passe
-
-    $password = "";
-
-    //Nom de la base de donnes
-
-    $db_name = 'todo_db';
-
-    //------------------------------------------Etablissement de la connection a la base de donnees
-
-    try{
-
-
-        //Entete numero 1 de la connexion PDO 
-        $Entete =  $server_type . ":host=" . $server_host . ";dbname=" . $db_name;  
-        $conn = new PDO($Entete, $username, $password );
-        $conn->exec("set names 'utf8'");
-        
-
-    //-------------------------------------------Sauf si erreur    
-    }catch(PDOException $e){
-        echo($e);
-    }
-
-
-
-
-
-
-
+    // Configuration des erreurs PDO en exceptions
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+} catch (PDOException $e) {
+    // Affichage de l'erreur et arrêt du script
+    die("Erreur de connexion à la base de données : " . $e->getMessage());
+}
 ?>
